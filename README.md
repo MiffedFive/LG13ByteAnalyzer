@@ -51,19 +51,7 @@ LG13ByteAnalyzer/
 5. Confirm that `LG-HVAC-13Byte` appears as an available High Level Analyzer.
 6. Open a capture containing the LG HVAC traffic.
 
-The extension metadata is defined in `extension.json`:
-
-```json
-{
-  "name": "LG-HVAC-13Byte",
-  "extensions": {
-    "LG-HVAC-13Byte": {
-      "type": "HighLevelAnalyzer",
-      "entryPoint": "LG13ByteAnalyzer.LG13ByteAnalyzer"
-    }
-  }
-}
-```
+The extension metadata is defined in `extension.json`.
 
 If Logic does not load the extension, make sure that `extension.json` and `LG13ByteAnalyzer.py` are in the same directory and that the entry-point name has not been changed.
 
