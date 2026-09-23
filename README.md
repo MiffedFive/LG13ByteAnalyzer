@@ -30,7 +30,7 @@ The analyzer is intended to run on top of a UART/Async Serial analyzer in Saleae
 
 - Saleae Logic 2.
 - A Saleae capture containing the LG HVAC serial traffic.
-- A serial analyzer configured for the protocol. The current implementation assumes approximately 104 baud and one byte per roughly 96 ms.
+- A serial analyzer configured for the protocol. The current implementation assumes 102 baud (8N1, 10 bits per byte) and one byte per roughly 98 ms.
 - Python support provided by Saleae Logic for High Level Analyzers.
 
 ## Repository files
@@ -77,9 +77,15 @@ Capture enough traffic to include complete 13-byte packets and the idle gap betw
 
 ### 2. Add the serial analyzer
 
-Add a UART or Async Serial analyzer to the capture and configure it for the LG bus. The exact electrical and UART settings depend on the controller and capture hardware; the analyzer currently expects a byte stream at approximately 104 baud.
+Add an **Async Serial** analyzer to the capture channel and configure it with the verified bus parameters:
 
-Verify that the serial analyzer produces one data frame for each received byte. If the decoded bytes are incorrect, check the baud rate, bit order, polarity, data bits, parity, and stop-bit settings before adding this HLA.
+- **Bit Rate (Baud Rate):** `102`
+- **Bits per Frame:** `8 Bits`
+- **Stop Bits:** `1 Stop Bit`
+- **Parity Bit:** `None`
+- **Significant Bit:** `LSB First`
+
+Verify that the serial analyzer produces one data frame for each received byte (~98 ms per byte). If framing errors occur or bytes are missing, verify signal levels and adjust the baud rate within the 100–104 baud window.
 
 ### 3. Add `LG-HVAC-13Byte`
 

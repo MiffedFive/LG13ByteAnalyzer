@@ -70,8 +70,8 @@ class LG13ByteAnalyzer(HighLevelAnalyzer):
         self.buffer = bytearray()
         self.frame_start_time = None
         self.last_byte_end_time = None
-        # At 104 baud, one byte takes approximately 96 ms to transmit.
-        # The inter-packet interval is usually >= 500 ms. A 300 ms timeout resets the buffer if data is lost.
+        # At 102 baud, one byte (8, N, 1) takes approximately 98 ms to transmit.
+        # The inter-packet interval is usually >= 500 ms. A 350 ms timeout resets the buffer if data is lost.
         self.packet_timeout_s = 0.35
 
     def decode(self, frame: AnalyzerFrame):
