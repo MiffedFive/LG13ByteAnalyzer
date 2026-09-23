@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "apiVersion": "1.0.0",
+  "author": "MiffedFive",
+  "description": "Saleae Logic HLA for LG 13-byte Wall Controller HVAC Protocol",
+  "name": "LG-HVAC-13Byte",
+  "extensions": {
+    "LG-HVAC-13Byte": {
+      "type": "HighLevelAnalyzer",
+      "entryPoint": "LG13ByteAnalyzer.LG13ByteAnalyzer"
+    }
+  }
+}
